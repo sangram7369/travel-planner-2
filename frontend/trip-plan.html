@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plan Trip - TripCraft</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="plan-trip">
+  <nav class="navbar">
+    <div class="logo">TripCraft</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="plan-trip.html">Plan Trip</a></li>
+      <li><a href="#">Flights</a></li>
+      <li><a href="#">Trains</a></li>
+      <li><a href="#">Buses</a></li>
+      <li><a href="#">Hotels</a></li>
+      <li><a href="#" id="logoutBtn">Logout</a></li>
+    </ul>
+  </nav>
+
+  <main class="plan-container">
+    <!-- Welcome message -->
+    <h2 id="welcome-message" style="color: #333; margin-bottom: 10px;"></h2>
+
+    <h1>Plan a new trip</h1>
+    <form id="tripForm">
+  <label for="destination">Where to?</label>
+  <input type="text" id="destination" placeholder="e.g. Paris, Hawaii, Japan" required>
+
+  <div class="date-inputs">
+    <div class="date-group">
+      <label for="start-date">Start Date</label>
+      <input type="date" id="start-date" required>
+    </div>
+    <div class="date-group">
+      <label for="end-date">End Date</label>
+      <input type="date" id="end-date" required>
+    </div>
+  </div>
+  
+  <label for="travelType">Travel Type:</label>
+  <select id="travelType" name="travelType" required>
+    <option value="solo">Solo</option>
+    <option value="couple">Couple</option>
+    <option value="group">Group</option>
+    <option value="family">Family</option>
+  </select>
+
+  <button type="submit" class="cta-btn">Start planning</button>
+</form>
+
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>TripCraft</h3>
+        <p>Hotels</p>
+        <p>Blog</p>
+        <p>Report security issue</p>
+        <p>Terms, Privacy policy & Copyright</p>
+        <p>Mobile app</p>
+      </div>
+      <div class="footer-section">
+        <h3>Guides & Resources</h3>
+        <p>Trip planners by destination</p>
+        <p>Explore cities & countries</p>
+        <p>Road trips</p>
+        <p>Itinerary guides</p>
+        <p>Best places by category</p>
+      </div>
+      <div class="footer-section">
+        <h3>Get the App</h3>
+      </div>
+    </div>
+    <p class="footer-bottom">Made with ❤️ by TripCraft © 2025</p>
+  </footer>
+
+  <!-- Script to handle user data and logout -->
+  <script>
+  const tripForm = document.getElementById("tripForm");
+
+  tripForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      alert("Please login first!");
+      window.location.href = "login.html";
+      return;
+    }
+
+    const tripData = {
+      destination: document.getElementById("destination").value,
+      startDate: document.getElementById("start-date").value,
+      endDate: document.getElementById("end-date").value,
+      travelType: document.getElementById("travelType").value
+    };
+
+    try {
+      const response = await fetch(`http://localhost:8080/api/trips?userId=${user.id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(tripData)
+      });
+
+      if (response.ok) {
+        alert("Trip saved successfully!");
+        tripForm.reset();
+      } else {
+        alert("Failed to save trip");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error saving trip");
+    }
+  });
+</script>
+
+</body>
+</html>
