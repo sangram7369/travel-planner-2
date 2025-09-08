@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripCraft - Hotel Search</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Fixed Header -->
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary custom-navbar">
+            <div class="container">
+                <a href="home.html" class="navbar-brand fw-bold fs-3">TripCraft</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-md-3">
+                        <li class="nav-item"><a class="nav-link" href="home.html">🏠 Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="plan-trip.html">🗺️ Plan Trip</a></li>
+                        <li class="nav-item"><a class="nav-link" href="itinerary.html">🗓️ Itinerary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flight.html">✈️ Flights</a></li>
+                        <li class="nav-item"><a class="nav-link" href="train.html">🚆 Trains</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bus.html">🚌 Buses</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="hotel.html">🏨 Hotels</a></li>
+                        <li class="nav-item"><a class="nav-link" href="expenses.html">💰 Expenses</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+
+        <!-- Booking Section -->
+        <section class="mb-5 pt-4">
+            <div class="card card-body p-4 p-md-5 rounded-4 booking-card border">
+                <!-- Hotel search form -->
+                <form id="hotel-search-form">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-lg-3 col-md-6"><label for="destination"
+                                class="form-label small fw-bold">Destination</label><input type="text" id="destination"
+                                name="destination" placeholder="e.g., Goa"
+                                class="form-control form-control-lg custom-input fw-bold" required></div>
+                        <div class="col-lg-2 col-md-6"><label for="checkin"
+                                class="form-label small fw-bold">Check-in</label><input type="date" id="checkin"
+                                name="checkin" class="form-control form-control-lg custom-input fw-bold" required></div>
+                        <div class="col-lg-2 col-md-6"><label for="checkout"
+                                class="form-label small fw-bold">Check-out</label><input type="date" id="checkout"
+                                name="checkout" class="form-control form-control-lg custom-input fw-bold" required></div>
+                        <div class="col-lg-3 col-md-6">
+                            <label for="rooms" class="form-label small fw-bold">Rooms</label>
+                            <input type="number" id="rooms" name="rooms" value="1" min="1" max="5"
+                                class="form-control form-control-lg custom-input fw-bold">
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label for="guests" class="form-label small fw-bold">Guests</label>
+                            <input type="number" id="guests" name="guests" value="2" min="1" max="10"
+                                class="form-control form-control-lg custom-input fw-bold">
+                        </div>
+                        <div class="col-lg-2 col-md-12"><button type="submit"
+                                class="btn btn-orange w-100 btn-lg fw-bold border-dark">Search</button></div>
+                    </div>
+                </form>
+                
+                <!-- Hotel Results -->
+                <div id="hotel-results" class="mt-4" style="display: none;">
+                    <h3>Available Hotels</h3>
+                    <div id="hotels-list"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <section>
+            <h2 class="text-center fw-bold fs-2 mb-4">Offers For You</h2>
+            <div class="row g-4">
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 border-0 rounded-4 overflow-hidden offer-card">
+                        <img src="https://plus.unsplash.com/premium_photo-1728735030984-fef628ee1929?q=80&w=995&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Customer Rewards">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold">Customer Reward</h5>
+                            <p class="card-text">Earn 5% cashback on credit cards</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 border-0 rounded-4 overflow-hidden offer-card">
+                        <img src="https://plus.unsplash.com/premium_photo-1728970536976-a735149b3ca3?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Mountain Cabin">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold">Earn Points</h5>
+                            <p class="card-text">Collect points on every booking.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 border-0 rounded-4 overflow-hidden offer-card">
+                        <img src="https://plus.unsplash.com/premium_photo-1728897797961-9781e07c6e34?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="City Hotel">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold">All-Inclusive Resorts</h5>
+                            <p class="card-text">Book 5 nights, get 1 free!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-3">
+                    <div class="card h-100 border-0 rounded-4 overflow-hidden offer-card">
+                        <img src="https://plus.unsplash.com/premium_photo-1728970536941-955336bd7ef9?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                            class="card-img-top" alt="Resort Pool">
+                        <div class="card-body">
+                            <h5 class="card-title fw-semibold">Last Minute Deals</h5>
+                            <p class="card-text">Save up to 40% on select stays.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="bg-dark text-white text-center fixed-bottom">
+        <div class="container py-3">
+            <p class="mb-0 small">© 2025 Copyright: Made with <i class="fas fa-heart footer-heart"></i> by TripCraft</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const API_BASE_URL = 'http://localhost:8080/api';
+
+        // Check if user is logged in
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // Get current user and trip
+        const currentUser = JSON.parse(localStorage.getItem('user') || '{}');
+        const currentTrip = JSON.parse(localStorage.getItem('currentTrip') || '{}');
+
+        // Hotel search form submission
+        document.getElementById('hotel-search-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const destination = document.getElementById('destination').value;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const rooms = parseInt(document.getElementById('rooms').value);
+            const guests = parseInt(document.getElementById('guests').value);
+            
+            if (!destination || !checkin || !checkout) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (new Date(checkin) >= new Date(checkout)) {
+                alert('Check-out date must be after check-in date');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/hotels/search?destinationCity=${encodeURIComponent(destination)}&checkIn=${checkin}&checkOut=${checkout}`);
+                const result = await response.json();
+                
+                if (result.success && result.data.length > 0) {
+                    displayHotels(result.data, checkin, checkout, rooms, guests);
+                } else {
+                    alert('No hotels found for the selected destination and dates');
+                }
+            } catch (error) {
+                console.error('Hotel search error:', error);
+                alert('Failed to search hotels. Please try again.');
+            }
+        });
+
+        function displayHotels(hotels, checkin, checkout, rooms, guests) {
+            const resultsDiv = document.getElementById('hotel-results');
+            const hotelsList = document.getElementById('hotels-list');
+            
+            hotelsList.innerHTML = '';
+            
+            hotels.forEach(hotel => {
+                const nights = Math.ceil((new Date(checkout) - new Date(checkin)) / (1000 * 60 * 60 * 24));
+                const totalPrice = hotel.pricePerNight * nights * rooms;
+                
+                const hotelCard = document.createElement('div');
+                hotelCard.className = 'card mb-3';
+                hotelCard.innerHTML = `
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-4">
+                                <h5 class="card-title">${hotel.name}</h5>
+                                <p class="card-text">${hotel.destinationCity}</p>
+                                <p class="card-text"><small class="text-muted">${hotel.address || 'Address not available'}</small></p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="card-text"><strong>Rating:</strong><br>${hotel.rating ? '⭐ '.repeat(Math.floor(hotel.rating)) + hotel.rating : 'Not rated'}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="card-text"><strong>Price/Night:</strong><br>₹${hotel.pricePerNight}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <p class="card-text"><strong>Total (${nights} nights):</strong><br>₹${totalPrice}</p>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary btn-sm" onclick="bookHotel(${hotel.hotelId}, '${checkin}', '${checkout}', ${rooms}, ${guests}, ${totalPrice})">
+                                    Book Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                hotelsList.appendChild(hotelCard);
+            });
+            
+            resultsDiv.style.display = 'block';
+        }
+
+        async function bookHotel(hotelId, checkin, checkout, rooms, guests, totalPrice) {
+            if (!currentTrip.tripId) {
+                alert('Please create a trip first');
+                window.location.href = 'plan-trip.html';
+                return;
+            }
+            
+            try {
+                const response = await fetch(`${API_BASE_URL}/hotel-bookings`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: currentUser.userId,
+                        tripId: currentTrip.tripId,
+                        hotelId: hotelId,
+                        checkIn: checkin,
+                        checkOut: checkout,
+                        rooms: rooms,
+                        guests: guests,
+                        totalPrice: totalPrice
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Hotel booked successfully!');
+                    window.location.href = 'expenses.html';
+                } else {
+                    alert('Failed to book hotel: ' + result.message);
+                }
+            } catch (error) {
+                console.error('Hotel booking error:', error);
+                alert('Failed to book hotel. Please try again.');
+            }
+        }
+    </script>
+
+</body>
+
+</html>

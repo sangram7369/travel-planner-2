@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripCraft - Confirm Booking</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- External CSS -->
+    <link rel="stylesheet" href="hotelconfirm.css">
+</head>
+
+<body>
+
+    <!-- Fixed Header -->
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary custom-navbar">
+            <div class="container">
+                <a href="home.html" class="navbar-brand fw-bold fs-3">TripCraft</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav gap-md-3">
+                        <li class="nav-item"><a class="nav-link" href="home.html">🏠 Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="plan-trip.html">🗺️ Plan Trip</a></li>
+                        <li class="nav-item"><a class="nav-link" href="itinerary.html">🗓️ Itinerary</a></li>
+                        <li class="nav-item"><a class="nav-link" href="flight.html">✈️ Flights</a></li>
+                        <li class="nav-item"><a class="nav-link" href="train.html">🚆 Trains</a></li>
+                        <li class="nav-item"><a class="nav-link" href="bus.html">🚆 Buses</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="hotel.html">🏨
+                                Hotels</a></li>
+                        <li class="nav-item"><a class="nav-link" href="expenses.html">💰 Expenses</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <section class="pt-4">
+
+            <!-- Step 3: Confirmation View -->
+            <div id="confirmation-view" class="d-none">
+                <div class="text-center pt-4">
+                    <i class="fas fa-check-circle fa-5x text-success mb-3"></i>
+                    <h2 class="display-6 fw-bold">Booking Confirmed!</h2>
+                    <p class="lead text-muted">Your reservation at Rambagh Palace has been confirmed.</p>
+                </div>
+
+                <div class="row justify-content-center mt-4 g-4">
+                    <div class="col-lg-6">
+                        <div class="card confirmation-card">
+                            <h5 class="card-header fw-bold">Guest Information</h5>
+                            <div class="card-body" id="conf-guest-details">
+                                <!-- Guest details will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card confirmation-card">
+                            <h5 class="card-header fw-bold">Booking Details</h5>
+                            <div class="card-body" id="conf-booking-details">
+                                <!-- Booking details will be populated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-5">
+                    <a href="home.html" class="btn btn-primary">Back to Home</a>
+                </div>
+            </div>
+
+            <!-- Step 1 & 2: Booking and Payment View -->
+            <div id="booking-payment-view">
+                <h2 class="fw-bold fs-2 mb-4 text-center" id="page-title">Confirm Your Booking</h2>
+                <div class="row g-4 g-lg-5">
+                    <!-- Left Column -->
+                    <div class="col-lg-7">
+                        <!-- Guest & Booking Details View -->
+                        <div id="details-view">
+                            <div class="card booking-section">
+                                <h5 class="card-header fw-bold">Hotel Details</h5>
+                                <div class="card-body">
+                                    <p class="fw-bold text-primary fs-5">Rambagh Palace</p>
+                                    <p class="text-muted mb-1"><i class="fas fa-phone me-2"></i> +91 141 238 5700</p>
+                                    <p class="text-muted mb-1"><i class="fas fa-envelope me-2"></i>
+                                        contact@rambaghpalace.com</p>
+                                    <p class="text-muted"><i class="fas fa-star me-2 text-warning"></i> Star Rating: 4.9
+                                    </p>
+                                    <div class="amenities-grid">
+                                        <span><i class="fas fa-wifi"></i> Wi-Fi</span>
+                                        <span><i class="fas fa-parking"></i> Parking</span>
+                                        <span><i class="fas fa-swimmer"></i> Pool</span>
+                                        <span><i class="fas fa-snowflake"></i> AC</span>
+                                        <span><i class="fas fa-utensils"></i> Breakfast</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card booking-section">
+                                <h5 class="card-header fw-bold">Guest Details</h5>
+                                <div class="card-body">
+                                    <form id="guest-form" novalidate>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3"><label for="firstName" class="form-label">First
+                                                    Name</label><input type="text" id="firstName" class="form-control"
+                                                    required></div>
+                                            <div class="col-md-6 mb-3"><label for="lastName" class="form-label">Last
+                                                    Name</label><input type="text" id="lastName" class="form-control"
+                                                    required></div>
+                                            <div class="col-md-6 mb-3"><label for="email"
+                                                    class="form-label">Email</label><input type="email" id="email"
+                                                    class="form-control" required></div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="phone" class="form-label">Phone</label>
+                                                <div class="input-group">
+                                                    <select class="form-select" id="countryCode"
+                                                        style="max-width: 100px;">
+                                                        <option value="+91" selected>+91 (IN)</option>
+                                                        <option value="+81">+81 (JP)</option>
+                                                        <option value="+82">+82 (KR)</option>
+                                                        <option value="+34">+34 (ES)</option>
+                                                        <option value="+971">+971 (AE)</option>
+                                                        <option value="+30">+30 (GR)</option>
+                                                    </select>
+                                                    <input type="tel" id="phone" class="form-control" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Payment Details View -->
+                        <div id="payment-view" class="d-none">
+                            <div class="card booking-section">
+                                <h5 class="card-header fw-bold">Payment Details</h5>
+                                <div class="card-body">
+                                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                        <li class="nav-item" role="presentation"><button class="nav-link active"
+                                                data-bs-toggle="pill" data-bs-target="#pills-card">Card</button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link"
+                                                data-bs-toggle="pill" data-bs-target="#pills-upi">UPI</button></li>
+                                        <li class="nav-item" role="presentation"><button class="nav-link"
+                                                data-bs-toggle="pill" data-bs-target="#pills-wallet">Wallet</button>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content pt-3">
+                                        <div class="tab-pane fade show active" id="pills-card">
+                                            <form>
+                                                <div class="mb-3"><label class="form-label">Card Holder
+                                                        Name</label><input type="text" class="form-control"
+                                                        placeholder="John Doe"></div>
+                                                <div class="mb-3"><label class="form-label">Card Number</label><input
+                                                        type="text" class="form-control"
+                                                        placeholder="1234 5678 9012 3456"></div>
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3"><label class="form-label">Expiry
+                                                            (MM/YY)</label><input type="text" class="form-control"
+                                                            placeholder="05/28"></div>
+                                                    <div class="col-md-6 mb-3"><label
+                                                            class="form-label">CVV</label><input type="text"
+                                                            class="form-control" placeholder="123"></div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-upi">
+                                            <div class="mb-3"><label class="form-label">Your UPI ID</label><input
+                                                    type="text" class="form-control" placeholder="yourname@bank"></div>
+                                            <button class="btn btn-outline-primary">Verify</button>
+                                        </div>
+                                        <div class="tab-pane fade" id="pills-wallet">
+                                            <label class="form-label">Select Wallet</label>
+                                            <select class="form-select">
+                                                <option>Paytm</option>
+                                                <option>PhonePe</option>
+                                                <option>Amazon Pay</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="col-lg-5">
+                        <div class="card summary-card sticky-top">
+                            <h5 class="card-header fw-bold" id="summary-title">Price Details</h5>
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between mb-2"><span>₹50,000 x 1
+                                        night</span><span>₹50,000</span></div>
+                                <div class="d-flex justify-content-between mb-3"><span>Taxes
+                                        (18%)</span><span>₹9,000</span></div>
+                                <hr>
+                                <div class="d-flex justify-content-between fw-bold fs-5">
+                                    <span>Total</span><span>₹59,000</span>
+                                </div>
+
+                                <div class="d-grid mt-4">
+                                    <button class="btn btn-primary btn-lg" id="proceed-btn">Book Now</button>
+                                </div>
+                                <p class="text-muted small mt-2 text-center">By proceeding, you agree to our terms and
+                                    conditions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Fixed Footer -->
+    <footer class="bg-dark text-white text-center fixed-bottom">
+        <div class="container py-3">
+            <p class="mb-0 small">© 2025 Copyright: Made with <i class="fas fa-heart footer-heart"></i> by TripCraft</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const proceedBtn = document.getElementById('proceed-btn');
+            const guestForm = document.getElementById('guest-form');
+
+            const detailsView = document.getElementById('details-view');
+            const paymentView = document.getElementById('payment-view');
+
+            const bookingPaymentView = document.getElementById('booking-payment-view');
+            const confirmationView = document.getElementById('confirmation-view');
+
+            const pageTitle = document.getElementById('page-title');
+            const summaryTitle = document.getElementById('summary-title');
+
+            const countryCodeSelect = document.getElementById('countryCode');
+            const phoneInput = document.getElementById('phone');
+
+            let currentStep = 'details'; // Can be 'details', 'payment', or 'confirmed'
+
+            function validatePhoneNumber() {
+                const selectedCode = countryCodeSelect.value;
+                const phoneNumber = phoneInput.value.trim();
+
+                if (selectedCode === '+91' && phoneNumber.length !== 10) {
+                    alert('Please enter a valid 10-digit phone number for India.');
+                    return false;
+                }
+                // Add more specific validation for other countries if needed
+                if (phoneNumber.length < 5 || !/^\d+$/.test(phoneNumber)) {
+                    alert('Please enter a correct phone number.');
+                    return false;
+                }
+                return true;
+            }
+
+            proceedBtn.addEventListener('click', () => {
+                if (currentStep === 'details') {
+                    // Validate guest form before proceeding
+                    if (guestForm.checkValidity() && validatePhoneNumber()) {
+                        // Switch to payment view
+                        pageTitle.textContent = 'Complete Your Booking';
+                        summaryTitle.textContent = 'Booking Summary';
+                        proceedBtn.textContent = 'Pay ₹59,000';
+                        proceedBtn.classList.remove('btn-primary');
+                        proceedBtn.classList.add('btn-success');
+
+                        detailsView.classList.add('d-none');
+                        paymentView.classList.remove('d-none');
+
+                        currentStep = 'payment';
+                    } else {
+                        guestForm.reportValidity(); // Show native form validation errors
+                    }
+                } else if (currentStep === 'payment') {
+                    // Ask for confirmation before finalizing
+                    if (confirm('Are you sure you want to confirm this booking?')) {
+                        // User clicked "OK", proceed with confirmation
+
+                        alert('SMS of confirmation details has been sent to you.');
+
+                        const guestName = `${document.getElementById('firstName').value} ${document.getElementById('lastName').value}`;
+                        const guestEmail = document.getElementById('email').value;
+                        const fullPhone = `${countryCodeSelect.value} ${phoneInput.value}`;
+
+                        document.getElementById('conf-guest-details').innerHTML = `
+                            <p><strong>Name:</strong> ${guestName}</p>
+                            <p><strong>Email:</strong> ${guestEmail}</p>
+                            <p><strong>Phone:</strong> ${fullPhone}</p>
+                            <p><strong>Payment Method:</strong> Credit Card</p>
+                        `;
+                        document.getElementById('conf-booking-details').innerHTML = `
+                            <p><strong>Booking Number:</strong> HPIXXQV2</p>
+                             <p><strong>Check-in:</strong> 2025-09-10</p>
+                             <p><strong>Check-out:</strong> 2025-09-12</p>
+                            <p><strong>Total Amount:</strong> ₹59,000</p>
+                        `;
+
+                        bookingPaymentView.classList.add('d-none');
+                        confirmationView.classList.remove('d-none');
+
+                        currentStep = 'confirmed';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
