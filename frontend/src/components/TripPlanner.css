@@ -1,0 +1,180 @@
+.trip-planner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.trip-planner-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.trip-planner-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.trip-planner-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.trip-planner-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.trip-form-section .card,
+.trips-list-section .card {
+  height: fit-content;
+}
+
+.trip-form {
+  margin-top: 20px;
+}
+
+.trips-list {
+  margin-top: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.trip-item {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-left: 4px solid #667eea;
+  transition: transform 0.3s ease;
+}
+
+.trip-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.trip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.trip-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem;
+}
+
+.trip-status {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.trip-status.upcoming {
+  background: #d1ecf1;
+  color: #0c5460;
+}
+
+.trip-status.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+.trip-details {
+  margin-bottom: 15px;
+}
+
+.trip-dates,
+.trip-budget {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  color: #666;
+  font-size: 14px;
+}
+
+.date-label,
+.budget-label {
+  font-size: 16px;
+}
+
+.trip-description {
+  margin-top: 10px;
+}
+
+.trip-description p {
+  margin: 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.trip-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-small {
+  padding: 6px 12px;
+  font-size: 12px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.empty-state p {
+  margin: 0;
+  font-size: 14px;
+}
+
+@media (max-width: 768px) {
+  .trip-planner {
+    padding: 15px;
+  }
+  
+  .trip-planner-header h1 {
+    font-size: 2rem;
+  }
+  
+  .trip-planner-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .trip-item {
+    padding: 15px;
+  }
+  
+  .trip-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .trip-actions {
+    justify-content: flex-start;
+  }
+}

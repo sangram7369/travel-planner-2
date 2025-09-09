@@ -1,0 +1,123 @@
+.profile {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 40px;
+  color: white;
+}
+
+.profile-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.profile-header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.profile-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.profile-info-section,
+.profile-security-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-form,
+.password-form {
+  margin-top: 20px;
+}
+
+.account-stats {
+  margin-top: 20px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.stat-item:last-child {
+  border-bottom: none;
+}
+
+.stat-label {
+  font-weight: 600;
+  color: #333;
+}
+
+.stat-value {
+  color: #667eea;
+  font-weight: 500;
+}
+
+.account-actions {
+  margin-top: 20px;
+}
+
+.action-item {
+  padding: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.action-item:last-child {
+  border-bottom: none;
+}
+
+.action-item h4 {
+  margin: 0 0 8px 0;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.action-item p {
+  margin: 0 0 15px 0;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.text-muted {
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .profile {
+    padding: 15px;
+  }
+  
+  .profile-header h1 {
+    font-size: 2rem;
+  }
+  
+  .profile-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .stat-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  
+  .action-item {
+    padding: 15px 0;
+  }
+}
